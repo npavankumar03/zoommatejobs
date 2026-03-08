@@ -1,0 +1,21 @@
+# Node
+frontend/node_modules
+frontend/.next
+
+# Python
+backend/__pycache__
+backend/.pytest_cache
+scraper/__pycache__
+scraper/logs/*.log
+!scraper/logs/.gitkeep
+
+# Env files
+.env
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode

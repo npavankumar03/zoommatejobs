@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-jose
+pdfplumber
+python-multipart
+openai
+google-generativeai
+redis
+celery
+apscheduler
+playwright
+beautifulsoup4
+httpx
+cryptography

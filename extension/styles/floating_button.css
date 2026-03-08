@@ -1,0 +1,221 @@
+#jobfill-ai-floating-button.jobfill-ai-button {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2147483600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.28);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#jobfill-ai-floating-button.jobfill-ai-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 36px rgba(2, 6, 23, 0.35);
+}
+
+#jobfill-ai-floating-button .jobfill-ai-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #10b981);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#jobfill-ai-floating-button .jobfill-ai-provider {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+#jobfill-ai-floating-button .jobfill-ai-spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: none;
+  animation: jobfill-ai-spin 0.8s linear infinite;
+}
+
+#jobfill-ai-floating-button.jobfill-ai-button--loading .jobfill-ai-spinner {
+  display: inline-block;
+}
+
+#jobfill-ai-floating-button.jobfill-ai-button--success {
+  background: #047857;
+}
+
+#jobfill-ai-floating-button.jobfill-ai-button--error {
+  background: #b91c1c;
+}
+
+#jobfill-ai-floating-button.jobfill-ai-button--pulse::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  border: 2px solid rgba(14, 165, 233, 0.55);
+  animation: jobfill-ai-pulse 1.6s ease-out infinite;
+}
+
+@keyframes jobfill-ai-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jobfill-ai-pulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+
+#jobfill-ai-results-overlay.jobfill-ai-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(460px, 92vw);
+  height: 100vh;
+  z-index: 2147483601;
+  background: #ffffff;
+  border-left: 1px solid #dbe3ee;
+  box-shadow: -14px 0 36px rgba(15, 23, 42, 0.24);
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+#jobfill-ai-results-overlay.jobfill-ai-overlay--visible {
+  transform: translateX(0);
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-header {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-header p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-close {
+  border: 0;
+  background: transparent;
+  color: #475569;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-close:hover {
+  background: #f1f5f9;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-list {
+  flex: 1;
+  overflow: auto;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-row {
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-value {
+  margin-top: 8px;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-confidence {
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-confidence--high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-confidence--medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-confidence--low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+#jobfill-ai-results-overlay .jobfill-ai-overlay-footer {
+  margin: 0;
+  border-top: 1px solid #e2e8f0;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #334155;
+  background: #f8fafc;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "zoommate",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "AI-powered autofill assistant for job application forms.",
+  "permissions": ["activeTab", "storage", "scripting", "identity", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["styles/floating_button.css", "icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

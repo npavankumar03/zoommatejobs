@@ -33,7 +33,7 @@ prompt_value() {
   printf -v "${var_name}" "%s" "${value}"
 }
 
-echo "Setting environment variables for zoommate"
+echo "Setting environment variables for deployment"
 echo
 
 DEFAULT_NEXTAUTH_SECRET="$(openssl rand -base64 32 | tr -d '\n')"

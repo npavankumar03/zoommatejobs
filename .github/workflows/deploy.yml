@@ -40,7 +40,7 @@ jobs:
           port: ${{ env.SERVER_PORT }}
           script_stop: true
           script: |
-            bash /var/www/jobfillai/deploy/deploy.sh
+            bash /opt/zoommate/deploy/deploy.sh
 
       - name: Notify success
         if: success()

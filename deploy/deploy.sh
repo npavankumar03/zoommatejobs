@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_ROOT="/var/www/jobfillai"
+APP_ROOT="/opt/zoommate"
 FRONTEND_DIR="${APP_ROOT}/frontend"
 BACKEND_DIR="${APP_ROOT}/backend"
 
@@ -38,7 +38,7 @@ fi
 
 echo "==> Reloading PM2 apps"
 cd "${APP_ROOT}"
-# Never touch /var/www/jobfillai/uploads during deploy.
+# Never touch /opt/zoommate/uploads during deploy.
 pm2 reload deploy/pm2.config.js --update-env || pm2 start deploy/pm2.config.js --update-env
 
 echo "Deploy complete"

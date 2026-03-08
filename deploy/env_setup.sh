@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_ROOT="/var/www/jobfillai"
+APP_ROOT="/opt/zoommate"
 ENV_FILE="${APP_ROOT}/.env"
 FRONTEND_ENV_FILE="${APP_ROOT}/frontend/.env"
 BACKEND_ENV_FILE="${APP_ROOT}/backend/.env"
@@ -39,14 +39,14 @@ echo
 DEFAULT_NEXTAUTH_SECRET="$(openssl rand -base64 32 | tr -d '\n')"
 DEFAULT_ENCRYPTION_KEY="$(openssl rand -hex 32 | tr -d '\n')"
 
-prompt_value DATABASE_URL "DATABASE_URL" "postgresql://jobfillai:change-me@localhost:5432/jobfillai"
+prompt_value DATABASE_URL "DATABASE_URL" "postgresql://zoommate:change-me@localhost:5432/zoommate"
 prompt_value REDIS_URL "REDIS_URL" "redis://localhost:6379/0"
 prompt_value GOOGLE_CLIENT_ID "GOOGLE_CLIENT_ID"
 prompt_value GOOGLE_CLIENT_SECRET "GOOGLE_CLIENT_SECRET" "" true
 prompt_value NEXTAUTH_SECRET "NEXTAUTH_SECRET" "${DEFAULT_NEXTAUTH_SECRET}" true
 prompt_value NEXTAUTH_URL "NEXTAUTH_URL" "https://jobs.zoommate.in"
 prompt_value NEXT_PUBLIC_API_URL "NEXT_PUBLIC_API_URL" "https://jobs.zoommate.in/api"
-prompt_value UPLOAD_DIR "UPLOAD_DIR" "/var/www/jobfillai/uploads"
+prompt_value UPLOAD_DIR "UPLOAD_DIR" "/opt/zoommate/uploads"
 prompt_value ENCRYPTION_KEY "ENCRYPTION_KEY" "${DEFAULT_ENCRYPTION_KEY}" true
 prompt_value OPENAI_API_KEY "OPENAI_API_KEY" "" true
 prompt_value GEMINI_API_KEY "GEMINI_API_KEY" "" true
@@ -79,7 +79,7 @@ echo "  ${FRONTEND_ENV_FILE}"
 echo "  ${BACKEND_ENV_FILE}"
 
 if command -v pm2 >/dev/null 2>&1; then
-  pm2 reload /var/www/jobfillai/deploy/pm2.config.js --update-env || true
+  pm2 reload /opt/zoommate/deploy/pm2.config.js --update-env || true
   echo "PM2 reload attempted."
 else
   echo "PM2 not found in PATH. Reload manually after sourcing NVM."

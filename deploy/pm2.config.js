@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "jobfillai-frontend",
-      cwd: "/var/www/jobfillai/frontend",
+      name: "zoommate-frontend",
+      cwd: "/opt/zoommate/frontend",
       script: "npm",
       args: "start",
       instances: 2,
@@ -13,17 +13,17 @@ module.exports = {
       }
     },
     {
-      name: "jobfillai-backend",
-      cwd: "/var/www/jobfillai/backend",
+      name: "zoommate-backend",
+      cwd: "/opt/zoommate/backend",
       script: "venv/bin/uvicorn",
       args: "app.main:app --host 0.0.0.0 --port 8000 --workers 4",
       env: {
-        PYTHONPATH: "/var/www/jobfillai/backend"
+        PYTHONPATH: "/opt/zoommate/backend"
       }
     },
     {
-      name: "jobfillai-scraper",
-      cwd: "/var/www/jobfillai/scraper",
+      name: "zoommate-scraper",
+      cwd: "/opt/zoommate/scraper",
       script: "venv/bin/python",
       args: "scheduler.py",
       instances: 1,

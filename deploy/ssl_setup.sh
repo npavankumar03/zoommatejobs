@@ -27,9 +27,9 @@ certbot "${CERTBOT_ARGS[@]}" \
   --non-interactive
 
 echo "==> Configuring auto-renewal cron"
-cat > /etc/cron.d/jobfillai-certbot <<'CRON'
+cat > /etc/cron.d/zoommate-certbot <<'CRON'
 0 3 * * * root certbot renew --quiet --post-hook "systemctl reload nginx"
 CRON
-chmod 644 /etc/cron.d/jobfillai-certbot
+chmod 644 /etc/cron.d/zoommate-certbot
 
 echo "SSL setup complete."

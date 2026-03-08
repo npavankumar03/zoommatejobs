@@ -6,15 +6,15 @@ if [[ "${EUID}" -ne 0 ]]; then
   exit 1
 fi
 
-APP_USER="jobfillai"
-APP_GROUP="jobfillai"
-APP_ROOT="/var/www/jobfillai"
+APP_USER="zoommate"
+APP_GROUP="zoommate"
+APP_ROOT="/opt/zoommate"
 UPLOAD_DIR="${APP_ROOT}/uploads"
-LOG_DIR="/var/log/jobfillai"
-BACKUP_DIR="/var/backups/jobfillai"
+LOG_DIR="/var/log/zoommate"
+BACKUP_DIR="/var/backups/zoommate"
 
-DB_NAME="${DB_NAME:-jobfillai}"
-DB_USER="${DB_USER:-jobfillai}"
+DB_NAME="${DB_NAME:-zoommate}"
+DB_USER="${DB_USER:-zoommate}"
 if [[ -z "${DB_PASSWORD:-}" ]]; then
   DB_PASSWORD="$(openssl rand -base64 24 | tr -d '\n')"
 fi
@@ -124,8 +124,8 @@ echo
 echo "Server setup complete."
 echo "Next steps:"
 echo "1) Clone your repo into ${APP_ROOT} as ${APP_USER}."
-echo "2) Run deploy/env_setup.sh to create /var/www/jobfillai/.env."
-echo "3) Copy deploy/nginx.conf to /etc/nginx/sites-available/jobfillai and enable it."
+echo "2) Run deploy/env_setup.sh to create ${APP_ROOT}/.env."
+echo "3) Copy deploy/nginx.conf to /etc/nginx/sites-available/zoommate and enable it."
 echo "4) Run deploy/ssl_setup.sh after DNS points to this server."
 echo "5) Start app with PM2: su - ${APP_USER} -c 'bash -lc \"cd ${APP_ROOT} && pm2 start deploy/pm2.config.js\"'"
 echo "6) Save PM2 process list: su - ${APP_USER} -c 'bash -lc \"pm2 save\"'"

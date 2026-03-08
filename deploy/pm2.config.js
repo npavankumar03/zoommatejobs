@@ -35,6 +35,19 @@ module.exports = {
       },
       instances: 1,
       autorestart: true
+    },
+    {
+      name: "zoommate-scraper-worker",
+      cwd: "/opt/zoommate",
+      script: "/opt/zoommate/scraper/venv/bin/celery",
+      args: "-A scraper.job_queue.celery_app worker --concurrency=5 --loglevel=INFO",
+      env: {
+        PYTHONPATH: "/opt/zoommate",
+        DATABASE_URL: process.env.DATABASE_URL,
+        REDIS_URL: process.env.REDIS_URL
+      },
+      instances: 1,
+      autorestart: true
     }
   ]
 };

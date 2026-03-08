@@ -39,8 +39,8 @@ module.exports = {
     {
       name: "zoommate-scraper-worker",
       cwd: "/opt/zoommate",
-      script: "/opt/zoommate/scraper/venv/bin/celery",
-      args: "-A scraper.job_queue.celery_app worker --concurrency=5 --loglevel=INFO",
+      script: "/opt/zoommate/scraper/venv/bin/python",
+      args: "-m celery -A scraper.job_queue.celery_app worker --concurrency=5 --loglevel=INFO",
       env: {
         PYTHONPATH: "/opt/zoommate",
         DATABASE_URL: process.env.DATABASE_URL,

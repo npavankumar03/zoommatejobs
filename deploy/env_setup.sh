@@ -79,7 +79,11 @@ echo "  ${FRONTEND_ENV_FILE}"
 echo "  ${BACKEND_ENV_FILE}"
 
 if command -v pm2 >/dev/null 2>&1; then
-  pm2 reload /opt/zoommate/deploy/pm2.config.js --update-env || true
+  set -a
+  # shellcheck disable=SC1090
+  source "${ENV_FILE}"
+  set +a
+  pm2 reload /opt/zoommate/deploy/pm2.config.js --update-env || pm2 start /opt/zoommate/deploy/pm2.config.js --update-env || true
   echo "PM2 reload attempted."
 else
   echo "PM2 not found in PATH. Reload manually after sourcing NVM."

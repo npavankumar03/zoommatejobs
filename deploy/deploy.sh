@@ -6,8 +6,19 @@ FRONTEND_DIR="${APP_ROOT}/frontend"
 BACKEND_DIR="${APP_ROOT}/backend"
 SCRAPER_DIR="${APP_ROOT}/scraper"
 NODE_VERSION="${NODE_VERSION:-20}"
+ENV_FILE="${APP_ROOT}/.env"
 
 cd "${APP_ROOT}"
+
+if [[ ! -f "${ENV_FILE}" ]]; then
+  echo "ERROR: ${ENV_FILE} not found. Run deploy/env_setup.sh first." >&2
+  exit 1
+fi
+
+set -a
+# shellcheck disable=SC1090
+source "${ENV_FILE}"
+set +a
 
 echo "==> Pulling latest code"
 git pull origin main

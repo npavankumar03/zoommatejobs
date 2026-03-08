@@ -23,9 +23,12 @@ module.exports = {
     },
     {
       name: "zoommate-scraper",
-      cwd: "/opt/zoommate/scraper",
-      script: "venv/bin/python",
-      args: "scheduler.py",
+      cwd: "/opt/zoommate",
+      script: "/opt/zoommate/scraper/venv/bin/python",
+      args: "-m scraper.scheduler",
+      env: {
+        PYTHONPATH: "/opt/zoommate"
+      },
       instances: 1,
       autorestart: true
     }
